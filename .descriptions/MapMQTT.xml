@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<block
+    name="MapMQTT" 
+    author="&#216;yvin Richardsen &lt;desarc00@gmail.com&gt;" 
+    provider="NTNU" 
+    purpose="Publish points on a map in the Generic Map UI" 
+    uuid="_npFb46N-EeO_erXR8oUgTA" 
+    status="published" 
+    type="block" 
+    >
+    <required>
+        <package name="com.bitreactive.library.android.maps.model"/>
+        <package name="no.ntnu.item.ttm4115.mqtt.basicmqtt"/>
+        <package name="no.ntnu.item.ttm4115.mqtt.basicmqtt.BasicMQTT"/>
+        <package name="no.ntnu.item.ttm4115.mqtt.mapmqtt"/>
+        <block name="c0" uuid="_7v-uIKN9EeO_erXR8oUgTA"/>
+        <block name="c1" uuid="_zt4MEJFhEeKUbpabydPWtg"/>
+        <block name="c2" uuid="_zt4MEJFhEeKUbpabydPWtg"/>
+    </required>
+<description><![CDATA[https://play.google.com/store/apps/details?id=com.bitreactive.apps.genericmapui]]></description></block>

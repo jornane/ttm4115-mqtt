@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<block
+    name="BasicMQTT" 
+    author="Y&#248;rn de Jong &lt;git@yorn.priv.no&gt;" 
+    provider="NTNU" 
+    purpose="MQTT composed block for use in TTM4115" 
+    uuid="_7v-uIKN9EeO_erXR8oUgTA" 
+    status="published" 
+    type="block" 
+    >
+    <required>
+        <package name="com.bitreactive.library.mqtt"/>
+        <package name="com.bitreactive.library.mqtt.mqtt.MQTT"/>
+        <package name="no.ntnu.item.ttm4115.mqtt.basicmqtt"/>
+        <package name="no.ntnu.item.ttm4115.mqtt.basicmqtt.BasicMQTT"/>
+        <block name="c0" uuid="_AB69sObWEeG9SpMqxrlJPg"/>
+    </required>
+<description><![CDATA[This block hides some complexity in the standard MQTT block, and allows the user to simply send String messages. Any serialising is the responsibility of the user.
+
+The block is designed to be used in the TTM4115 course. Students are expected to compose it themselves in a block that will send and receive Taxi messages.
+
+In the TTM4115 course, students are working in groups and each group is allocated a number [1]. The BasicMQTT block sets a base topic that will be invisible to the student, to allow students to use overlapping topic names without conflicts. In order to allow this, students will have to set their group number as a parameter for this block and the block will throw an exception if this is not done, along with instructions on how to fix it.
+
+[1] http://www.item.ntnu.no/academics/courses/ttm4115/groups]]></description></block>
