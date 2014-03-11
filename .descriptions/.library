@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <library
-    title="TTM4115 MQTT blocks" 
-    version="1.0.0" 
+    title="TTM4115 MQTT" 
+    version="1.1.0" 
     uuid="_3_NyQKN9EeO_erXR8oUgTA" 
-    purpose="In the term assignment for TTM4115, students are required to make a taxi simulator where taxis drive around on a map shown on a tablet device.  The map application on the tablet is provided (https://play.google.com/store/apps/details?id=com.bitreactive.apps.genericmapui), but the points on the map must be provided by code written by the students.  The protocol for communicating with the Generic Map UI is MQTT.  This project contains two blocks, one generic block BasicMQTT for sending plain Strings over MQTT and one specific block MapMQTT which uses BasicMQTT to support sending MapUpdate objects to the Generic Map UI.  Students are expected to use MapMQTT for communication with the Generic Map UI.  Students should make their own TaxiMQTT block using BasicMQTT which allows taxis to communicate with a dispatch service that tells them where to pick up customers.  The blocks are created using Reactive Blocks(http://www.bitreactive.com/technology/), which requires a license to compile the software.  The blocks themselves are available both on Github (https://github.com/yorn/ttm4115-mqtt) and Reactive Blocks' own library." 
+    purpose="Simplified MQTT blocks for the TTM4115 term assignment. Use together with the Generic Map UI:  https://play.google.com/store/apps/details?id=com.bitreactive.apps.genericmapui  Configure the Generic Map UI with the following topic: 'ntnu/item/ttm4115/group0/map' (where you change group0 to your group number)" 
     >
     <dependencies>
         <dependency name="com.bitreactive.library.genericmapui" uuid="_ufQLEJFhEeKUbpabydPWtg" version="1.1.0"/>
