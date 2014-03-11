@@ -21,4 +21,6 @@ The block is designed to be used in the TTM4115 course. Students are expected to
 
 In the TTM4115 course, students are working in groups and each group is allocated a number [1]. The BasicMQTT block sets a base topic that will be invisible to the student, to allow students to use overlapping topic names without conflicts. In order to allow this, students will have to set their group number as a parameter for this block and the block will throw an exception if this is not done, along with instructions on how to fix it.
 
+Since this block is also used inside MapMQTT, a different way of instantiating is required. Students should simply set their group number in the "Parameters and Generics" window, but enclosing blocks (like MapMQTT) should use the AdvancedConfiguration PIN and provide *their* users with a group number parameter. This solution is not ideal and hopefully BitReactive will fix the issue soon.
+
 [1] http://www.item.ntnu.no/academics/courses/ttm4115/groups]]></description></block>
