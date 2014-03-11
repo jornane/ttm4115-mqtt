@@ -8,6 +8,5 @@
     <dependencies>
         <dependency name="com.bitreactive.library.genericmapui" uuid="_ufQLEJFhEeKUbpabydPWtg" version="1.1.0"/>
         <dependency name="com.bitreactive.library.mqtt" uuid="_iVDkMOJLEeGulKFN7xtCsw" version="1.6.0"/>
-        <dependency name="no.ntnu.item.ttm4115.termassignment" uuid="_K7p9UJNHEeOhlfVj5NGtGA" version="1.0.0"/>
     </dependencies>
 </library>
