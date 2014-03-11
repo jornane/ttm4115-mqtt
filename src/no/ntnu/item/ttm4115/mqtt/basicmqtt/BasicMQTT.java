@@ -2,10 +2,10 @@ package no.ntnu.item.ttm4115.mqtt.basicmqtt;
 
 import java.nio.charset.Charset;
 
+import no.ntnu.item.arctis.runtime.Block;
+
 import com.bitreactive.library.mqtt.MQTTConfigParam;
 import com.bitreactive.library.mqtt.mqtt.MQTT.Message;
-
-import no.ntnu.item.arctis.runtime.Block;
 
 /**
  * Composed MQTT block that uses Reactive Blocks "instance parameters" instead of static properties.
@@ -24,12 +24,17 @@ public class BasicMQTT extends Block {
 	 * Base topic without group number;
 	 * group number as int, followed by slash, must be appended
 	 */
-	private static final String BASE_TOPIC = "ntnu/item/ttm4115/group-";
+	private static final String BASE_TOPIC = "ntnu/item/ttm4115/group";
 	
 	/** Charset constant for encoding/decoding MQTT messages */
 	private static final Charset UTF8;
 	static {
-		Charset utf8 = Charset.forName("UTF-8");
+		Charset utf8 = null;
+		try {
+			utf8 = Charset.forName("UTF-8");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if (utf8 == null) {
 			utf8 = Charset.defaultCharset();
 		}
@@ -41,8 +46,6 @@ public class BasicMQTT extends Block {
 	/** Effective group number, either from UI or AdvancedConfiguration */
 	public int effectiveGroup;
 
-	public java.lang.String topic;
-	
 	/**
 	 * Datatype used for advanced configuration.
 	 * Required in generic enclosing blocks.
@@ -96,12 +99,14 @@ public class BasicMQTT extends Block {
 		String clientId = MQTTConfigParam.generateUUID(); // not UUID, UID.
 		MQTTConfigParam config = new MQTTConfigParam("broker.mqttdashboard.com", 1883, clientId);
 		String[] topics = subscribeTopics.split(",");
-		for(String topic : topics)
-			if (!topic.equals(""))
+		for(String topic : topics) {
+			logInfo("Started listening on topic "+topicBase+'/'+topic);
+			if (!topic.equals("")) {
 				config.addSubscribeTopic(topicBase+"/"+topic);
-		// Set broadcast as default topic. Don't use this, though. Specify a real topic.
-		config.setDefaultPublishTopic(topicBase+"/*");
-		topic = "*";
+			}
+		}
+		// Default topic should never be used, as ESM prohibits it.
+		config.setDefaultPublishTopic(topicBase+"/");
 		return config;
 	}
 
@@ -113,10 +118,13 @@ public class BasicMQTT extends Block {
 	 * @copyright 2014 Y¿rn de Jong <git@yorn.priv.no>
 	 * 
 	 * @param content	Acutual payload of the message
+	 * @param topic	The topic the message is sent to
 	 * @return Message with prefixed topic
 	 */
-	public Message createMessage(String content) {
-		return new Message(content.getBytes(UTF8), BASE_TOPIC+effectiveGroup+"/"+topic);
+	public Message createMessage(String content, String topic) {
+		topic = BASE_TOPIC+effectiveGroup+"/"+topic;
+		logDebug("Send message to topic \""+topic+"\": \""+content+"\"");
+		return new Message(content.getBytes(UTF8), topic);
 	}
 	
 	/**
@@ -129,8 +137,10 @@ public class BasicMQTT extends Block {
 	 */
 	public String messageToTruncatedTopic(Message message) {
 		String topicBase = BASE_TOPIC+effectiveGroup+"/";
-		if (message.getTopic().startsWith(topicBase))
+		if (message.getTopic().startsWith(topicBase)) {
 			return message.getTopic().substring(topicBase.length());
+		}
+		logWarn("Received message on unexpected topic \""+message.getTopic()+"\"");
 		return message.getTopic();
 	}
 
