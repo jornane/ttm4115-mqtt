@@ -97,7 +97,7 @@ public class BasicMQTT extends Block {
 		}
 		String topicBase = BASE_TOPIC+effectiveGroup;
 		String clientId = MQTTConfigParam.generateUUID(); // not UUID, UID.
-		MQTTConfigParam config = new MQTTConfigParam("broker.mqttdashboard.com", 1883, clientId);
+		MQTTConfigParam config = new MQTTConfigParam("dev.bitreactive.com", 1883, clientId);
 		String[] topics = subscribeTopics.split(",");
 		for(String topic : topics) {
 			logInfo("Started listening on topic "+topicBase+'/'+topic);
