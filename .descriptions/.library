@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <library
     title="TTM4115 MQTT" 
-    version="1.1.0" 
+    version="1.1.1" 
     uuid="_3_NyQKN9EeO_erXR8oUgTA" 
     purpose="Simplified MQTT blocks for the TTM4115 term assignment. Use together with the Generic Map UI:  https://play.google.com/store/apps/details?id=com.bitreactive.apps.genericmapui  Configure the Generic Map UI with the following topic: 'ntnu/item/ttm4115/group0/map' (where you change group0 to your group number)" 
     >
